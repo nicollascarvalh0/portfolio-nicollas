@@ -11,17 +11,15 @@ import Emoji from "../components/Emoji";
 import SocialNetwork from "../components/SocialNetwork";
 import Repo from "../components/Repo";
 
-import { VscGithub, VscTwitter } from "react-icons/vsc";
-import { ImYoutube } from "react-icons/im";
+import { VscGithub } from "react-icons/vsc";
 import { FaLinkedinIn } from "react-icons/fa";
-import { SiDiscord } from "react-icons/si";
 import { RiInstagramLine } from "react-icons/ri";
 
 export const getStaticProps: GetStaticProps = async () => {
   const songsDirectory = path.join(process.cwd(), "public/musics");
   const songs = fs.readdirSync(songsDirectory);
 
-  const reposRes = await fetch("https://api.github.com/users/zf4ke/repos");
+  const reposRes = await fetch("https://api.github.com/users/nicollascarvalh0/repos");
   const repos = await reposRes.json();
 
   repos.sort((a, b) => b.stargazers_count - a.stargazers_count);
@@ -59,7 +57,7 @@ function getAge(dateString) {
   }
   return age;
 }
-const myAge = getAge("2004/10/07").toString();
+const myAge = getAge("2006/10/05").toString();
 
 const Home = (props: props) => {
   const whoAmISectionRef = useRef(null);
@@ -83,7 +81,7 @@ const Home = (props: props) => {
 
       <Section title={"Who Am I"}>
         <div ref={whoAmISectionRef}>
-          <p>zf4ke@archlinux</p>
+          <p>nicollascarvalh0@archlinux</p>
           <br />
           <p>
             <strong>Hey!</strong> My name is{" "}
@@ -91,20 +89,13 @@ const Home = (props: props) => {
               className="text-violet-500 cursor-pointer link link-underline link-underline-violet-500"
               onClick={() => handleClickScroll(contactSectionRef)}
             >
-              Pedro Silva
+              Nícollas Carvalho
             </strong>
-            , I&apos;m {myAge} years old and I&apos;m Portuguese{" "}
-            <Emoji symbol="🇵🇹" />. I started coding since I was 11 years old and
-            I&apos;m particularly interested in Artificial Intelligence and Web Development.
+            , I&apos;m {myAge} years old and I&apos;m Pernambucan{" "}
+            <Emoji symbol="🇵🇹" />. I started coding since I was 15 years old and
+            I&apos;m particularly interested in Artificial Intelligence and Game Programming.
           </p>
-          <br />
-          <p>Currently, I am pursuing a degree in Computer Science at FCUL (Faculdade de Ciências da Universidade de Lisboa). I am also passionate about exploring new opportunities to apply my skills and knowledge. One of my favorite experiences so far has been participating in CanSat, where I helped create a microsatellite. This experience has taught me valuable skills in teamwork, project management, and problem-solving.</p>
-          <br />
-          <p>In my free time, I like to share my knowledge and learn new things through my <a href="//youtube.com/c/zFake/" target="_blank" rel="noreferrer" className="text-violet-500 cursor-pointer link link-underline link-underline-violet-500">YouTube channel</a>, where I teach coding and science to others, as well as solving riddles and puzzles. This helps keep my mind sharp and allows me to approach problems from different angles.</p>
-          <br />
-          <p>In addition to my academic pursuits, I am also studying Artificial Intelligence on my own. I have a curious mind and I am always eager to learn new concepts and technologies.</p>
-        </div>
-      </Section>
+         
 
       {/* <Section title={"Skills"}>
         <div>
@@ -127,13 +118,13 @@ const Home = (props: props) => {
 
       <Section title={"Projects"}>
         <div ref={projectsSectionRef}>
-          <p>{"{ github.com/zf4ke }"}</p>
+          <p>{"{ github.com/nicollascarvalh0 }"}</p>
           <br />
           <div className="flex max-h-[660px] overflow-auto">
             <div className="space-y-7">
               {props?.repos &&
                 props?.repos.map((r) => {
-                  if (!r.fork && r.name != "zF4ke")
+                  if (!r.fork && r.name != "Nicz")
                     return <Repo key={r.id.toString()} repo={r} />;
                 })}
             </div>
@@ -149,50 +140,34 @@ const Home = (props: props) => {
           <ul className="space-y-1.5">
             <SocialNetwork
               name="Github"
-              url="//github.com/zf4ke"
-              username="@zf4ke"
+              url="//github.com/nicollascarvalh0"
+              username="@nicollascarvalh0"
               Icon={VscGithub}
             />
-
-            <SocialNetwork
-              name="Youtube"
-              url="//youtube.com/c/zFake/"
-              username="zFake"
-              Icon={ImYoutube}
+            
             />
 
             <SocialNetwork
               name="LinkedIn"
-              url="//linkedin.com/in/zf4ke"
-              username="@zf4ke"
+              url="https://www.linkedin.com/in/n%C3%ADcollas-carvalho-a36057366/"
+              username="@nicollascarvalho"
               Icon={FaLinkedinIn}
             />
 
-            <SocialNetwork
-              name="Discord"
-              url="//discord.com/users/676156690395037713/"
-              username="zF4ke#8556"
-              Icon={SiDiscord}
-            />
-
-            <SocialNetwork
-              name="Twitter"
-              url="//twitter.com/zF4ked"
-              username="@zF4ked"
-              Icon={VscTwitter}
+           
             />
 
             <SocialNetwork
               name="Instagram"
-              url="//instagram.com/zf4ked/"
-              username="@zF4ked"
+              url="//instagram.com/nicollaas.carvalho/"
+              username="@nicollaas.carvalho"
               Icon={RiInstagramLine}
             />
           </ul>
           <p>...</p>
           <br />
           <a
-            href="mailto:pedrohsilva955@gmail.com"
+            href="mailto:nicollaascarvalho@gmail.com"
             target="_blank"
             rel="noreferrer"
             className="bg-violet-500 hover:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300 active:bg-violet-700 transitions-all duration-100 px-5 py-2 text-sm leading-5 rounded-full font-semibold text-white"
@@ -205,7 +180,7 @@ const Home = (props: props) => {
       <div className="mt-32"></div>
 
       <footer className="text-center mt-16 font-mono text-zinc-500">
-        &copy; zF4ke {new Date().getFullYear()}
+        &copy; Nicz {new Date().getFullYear()}
       </footer>
     </div>
   );
